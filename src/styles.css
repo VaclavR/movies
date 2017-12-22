@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+.h60px {
+  height: 60px!important;
+}
+
+.h80px {
+  height: 80px!important;
+}
+
+.w400px {
+  width: 400px!important;
+}
+
+a:hover {
+  cursor: pointer;
+}

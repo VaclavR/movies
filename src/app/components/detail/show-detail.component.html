@@ -1,0 +1,46 @@
+<div *ngIf="searchResult !== undefined" class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Poster</th>
+      <th scope="col">Summary</th>
+      <th scope="col">Rating</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th> {{ searchResult[0].name }}</th>
+      <td><img *ngIf="searchResult[0].image !== null" [src]="searchResult[0].image.medium" alt="poster is not available"></td>
+      <td [innerHtml]="searchResult[0].summary"></td>
+      <td>{{ searchResult[0].rating?.average }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h4>Cast</h4>
+  <span *ngFor="let result of searchResult[1]; let i = index">
+    <a *ngIf="result !== undefined" (click)="reRoute(result.person?.id)">{{ result.person?.name }}</a><span *ngIf="i < searchResult[1].length - 1">,</span>
+  </span>
+  <br><br>
+
+  <h4>Episodes</h4>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Season</th>
+      <th scope="col">Episode</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+    </tr>
+    </thead>
+    <tr *ngFor="let episode of searchResult[2]">
+      <th>{{ episode.name }}</th>
+      <td>{{ episode.season }}</td>
+      <td>{{ episode.number }}</td>
+      <td>{{ episode.airdate }}</td>
+      <td>{{ episode.airtime }}</td>
+    </tr>
+  </table>
+</div>

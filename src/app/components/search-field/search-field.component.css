@@ -1,0 +1,11 @@
+input {
+  text-align: center;
+  font-size: 150%;
+  color: #00a172;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+input:focus {
+  color: #00a172;
+}

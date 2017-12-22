@@ -1,0 +1,35 @@
+<div class="container" *ngIf="searchResults !== undefined">
+  <h5>{{ searchKey }}</h5>
+  <table *ngIf="searchResults[0].length !== 0" class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Poster</th>
+      <th scope="col">Summary</th>
+      <th scope="col">Rating</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let result of searchResults[0]">
+      <th><a [routerLink]="['/results/show', result.show.id]">{{ result.show.name }}</a></th>
+      <td><img *ngIf="result.show.image !== null" [src]=result.show.image.medium [alt]=result.show.name></td>
+      <td [innerHtml]=result.show.summary></td>
+      <td>{{ result.show.rating.average }}</td>
+    </tr>
+  </table>
+  <table *ngIf="searchResults[1].length !== 0" class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Image</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let result of searchResults[1]">
+      <th><a [routerLink]="['/results/person', result.person.id]">{{ result.person.name }}</a></th>
+      <td><img *ngIf="result.person.image !== null" [src]=result.person.image.medium [alt]=result.person.name></td>
+    </tr>
+  </table>
+</div>
+
+

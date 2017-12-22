@@ -1,0 +1,23 @@
+<div *ngIf="searchResult !== undefined" class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Poster</th>
+      <th scope="col">Summary</th>
+      <th scope="col">Season</th>
+      <th scope="col">Episode</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th> {{ searchResult.name }}</th>
+      <!--<td><img *ngIf="searchResult.image !== null" [src]="searchResult.image.medium" alt="poster is not available"></td>-->
+      <td [innerHtml]="searchResult.summary"></td>
+      <td>{{ searchResult.season }}</td>
+      <td>{{ searchResult.number }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
