@@ -14,14 +14,15 @@ import * as SearchActions from '../../store/search/search.actions';
 export class ShowDetailComponent implements OnInit, OnDestroy {
   searchSubscription: Subscription;
   searchResult;
+  id: number;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.params['id'];
-    this.store.dispatch(new SearchActions.FetchShowById(id));
+    this.id = +this.route.snapshot.params['id'];
+    this.store.dispatch(new SearchActions.FetchShowById(this.id));
     this.searchSubscription = this.store.select('search')
       .subscribe((state: fromSearch.State) => {
         if (state.searchResult.length !== 0) {
@@ -30,12 +31,15 @@ export class ShowDetailComponent implements OnInit, OnDestroy {
       });
   }
 
-  reRoute(id) {
+  reRouteToPerson(id) {
     this.router.navigate(['/results/person', id]);
   }
 
+  reRouteToEpisode({season, episode}) {
+    this.router.navigate(['/results/show', this.id, season, episode]);
+  }
+
   ngOnDestroy() {
-    this.searchResult = undefined;
     this.searchSubscription.unsubscribe();
   }
 

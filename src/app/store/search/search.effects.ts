@@ -69,7 +69,7 @@ export class SearchEffects {
           }
         })
     });
-  // http://api.tvmaze.com/shows/1/episodebynumber?season=1&number=1
+
   @Effect()
   fetchEpisodeByNumber = this.actions$
     .ofType(SearchActions.FETCH_EPISODE_BY_NUMBER)
@@ -79,7 +79,6 @@ export class SearchEffects {
         + action.payload.episode.season + '&number=' + action.payload.episode.episode)
     })
     .map((event) => {
-      console.log(event);
       return {
         type: SearchActions.SAVE_RESULT,
         payload: event

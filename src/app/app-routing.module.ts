@@ -5,6 +5,7 @@ import { SearchResultComponent } from './components/search-result/search-result.
 import { ShowDetailComponent } from './components/detail/show-detail.component';
 import { PersonDetailComponent } from './components/detail/person-detail.component';
 import { EpisodeDetailComponent } from './components/detail/episode-detail.component';
+import { FormComponent } from './components/form/form.component';
 
 const routes = [
   { path: '', component: HomeComponent, pathMatch: 'full'},
@@ -12,6 +13,7 @@ const routes = [
   { path: 'results/show/:id', component: ShowDetailComponent },
   { path: 'results/show/:id/:season/:episode', component: EpisodeDetailComponent },
   { path: 'results/person/:id', component: PersonDetailComponent },
+  { path: 'form', component: FormComponent },
   { path: '**', redirectTo: '/'}
 ];
 
@@ -23,7 +25,6 @@ const routes = [
     RouterModule
   ],
   declarations: [
-    HomeComponent
   ]
 })
 export class AppRoutingModule { }

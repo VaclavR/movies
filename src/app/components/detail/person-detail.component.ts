@@ -33,7 +33,6 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
   }
 
   reRoute(id) {
-    this.searchResult = undefined;
     this.router.navigate(['/results/show', id]);
   }
 

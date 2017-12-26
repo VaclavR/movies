@@ -1,0 +1,21 @@
+input, input:-webkit-autofill {
+  color: #00a172;
+  background-color: black!important;
+  border-color: #066c3f;
+}
+
+input:focus, input:-webkit-autofill {
+  color: #00a172;
+  background-color: black!important;
+  border-color: #066c3f;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px black inset;
+  -webkit-text-fill-color: #00a172 !important;
+}
+
+.btn-black {
+  color: #00a172;
+  background-color: black;
+}

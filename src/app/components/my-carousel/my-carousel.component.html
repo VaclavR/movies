@@ -1,0 +1,12 @@
+<div *ngIf="carouselItems !== undefined">
+  <carousel>
+    <slide *ngFor="let item of carouselItems">
+      <img [src]="item.img" [alt]="item.name" style="display: block; width: 100%;">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.desc }}</p>
+      </div>
+    </slide>
+  </carousel>
+</div>
+

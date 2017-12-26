@@ -9,7 +9,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr *ngIf="searchResult[0] !== undefined">
       <th> {{ searchResult[0].name }}</th>
       <td><img *ngIf="searchResult[0].image !== null" [src]="searchResult[0].image.medium" alt="poster is not available"></td>
       <td [innerHtml]="searchResult[0].summary"></td>
@@ -20,7 +20,7 @@
 
   <h4>Cast</h4>
   <span *ngFor="let result of searchResult[1]; let i = index">
-    <a *ngIf="result !== undefined" (click)="reRoute(result.person?.id)">{{ result.person?.name }}</a><span *ngIf="i < searchResult[1].length - 1">,</span>
+    <a *ngIf="result !== undefined" (click)="reRouteToPerson(result.person?.id)">{{ result.person?.name }}</a><span *ngIf="i < searchResult[1].length - 1">,</span>
   </span>
   <br><br>
 
@@ -36,7 +36,7 @@
     </tr>
     </thead>
     <tr *ngFor="let episode of searchResult[2]">
-      <th>{{ episode.name }}</th>
+      <th><a (click)="reRouteToEpisode({season: episode.season, episode: episode.number})">{{ episode.name }}</a></th>
       <td>{{ episode.season }}</td>
       <td>{{ episode.number }}</td>
       <td>{{ episode.airdate }}</td>

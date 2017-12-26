@@ -1,0 +1,13 @@
+slide {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.carousel-caption {
+  color: #faffef;
+  text-shadow: 2px 2px black;
+}
+
+img {
+  border-radius: 20px;
+}

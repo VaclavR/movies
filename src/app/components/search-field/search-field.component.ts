@@ -24,7 +24,7 @@ export class SearchFieldComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.searchForm.value.search.length !== 0) {
+    if (this.searchForm.value.search !== undefined && this.searchForm.value.search !== null) {
       this.store.dispatch(new SearchActions.SaveSearchKey(this.searchForm.value.search));
       this.store.dispatch(new SearchActions.SearchShowByName(this.searchForm.value.search));
       this.searchForm.reset();

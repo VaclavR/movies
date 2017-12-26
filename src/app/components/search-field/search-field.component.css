@@ -2,10 +2,14 @@ input {
   text-align: center;
   font-size: 150%;
   color: #00a172;
+  background-color: black;
   text-transform: uppercase;
   font-weight: bold;
+  border-color: #066c3f;
 }
 
 input:focus {
   color: #00a172;
+  background-color: black;
+  border-color: #066c3f;
 }

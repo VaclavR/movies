@@ -12,12 +12,16 @@
     <tbody>
     <tr>
       <th> {{ searchResult.name }}</th>
-      <!--<td><img *ngIf="searchResult.image !== null" [src]="searchResult.image.medium" alt="poster is not available"></td>-->
+      <td *ngIf="searchResult.image !== undefined">
+        <img *ngIf="searchResult.image !== null" [src]="searchResult.image.medium"
+             alt="poster is not available">
+      </td>
       <td [innerHtml]="searchResult.summary"></td>
       <td>{{ searchResult.season }}</td>
       <td>{{ searchResult.number }}</td>
     </tr>
     </tbody>
   </table>
+  <button (click)="goBack()" class="btn btn-info">Back</button>
 
 </div>

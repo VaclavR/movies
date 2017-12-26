@@ -13,3 +13,14 @@
 a:hover {
   cursor: pointer;
 }
+
+
+body {
+  background-color: black;
+  color: #99e69a;
+}
+
+.table-green th, .table-green td {
+  color: #99e69a;
+  border-color: #99e69a!important;
+}

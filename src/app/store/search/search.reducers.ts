@@ -8,7 +8,13 @@ export interface State {
 }
 
 const initialState = {
-  carouselItems: ['1', '2', '3'],
+  carouselItems: [
+    { name: 'The Big Bang Theory', img: 'assets/carousel/bigbang.jpeg', desc: 'sitcom' },
+    { name: 'Dirk Gently\'s Holistic Detective Agency', img: 'assets/carousel/dirkgently.jpeg', desc: 'sitcom' },
+    { name: 'The Orville', img: 'assets/carousel/orville.jpeg', desc: 'sitcom' },
+    { name: 'Red Dwarf', img: 'assets/carousel/reddwarf.jpeg', desc: 'sitcom' },
+    { name: 'The Young Sheldon', img: 'assets/carousel/youngsheldon.jpeg', desc: 'sitcom' }
+  ],
   searchKey: '',
   searchResults: [],
   searchResult: []
