@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="image-overlay">
+    <img class="card-img-top" *ngIf="people.person.image !== null"
+         [src]="people.person.image.medium" [alt]="people.person.name">
+    <img class="card-img-top" *ngIf="people.person.image === null"
+       src="assets/no-img.png" [alt]="people.person.name">
+  </div>
+  <div class="card-body">
+    <p class="card-title">
+      <a><i [ngClass]="[liked ? 'fa-heart' : 'fa-heart-o']"
+            *ngIf="logged"
+            (click)="like(people.person.id)"
+            class="fa text-danger" aria-hidden="true">
+      </i></a>
+      {{ people.person.name }}
+    </p>
+    <a [routerLink]="['/results/person', people.person.id]" class="btn btn-primary">
+      Detail
+    </a>
+  </div>
+</div>

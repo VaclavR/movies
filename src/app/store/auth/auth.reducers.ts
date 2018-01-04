@@ -2,11 +2,13 @@ import * as AuthActions from './auth.actions';
 
 export interface State {
   token: string;
+  userId: string;
   logged: boolean;
 }
 
 const initialState = {
   token: '',
+  userId: '',
   logged: false
 };
 
@@ -14,21 +16,24 @@ export function AuthReducer(state = initialState, action: AuthActions.AuthAction
   switch (action.type) {
 
     case (AuthActions.LOGIN):
-      console.log('Logged!');
+      console.log('Logged!', action.payload);
       return {
         ...state,
-        logged: true
-      };
-
-    case (AuthActions.SET_TOKEN):
-      console.log('Token!');
-      return {
-        ...state,
-        token: action.payload
+        logged: true,
+        userId: action.payload[0].replace('@', '').replace('.', ''),
+        token: action.payload[1],
       };
 
     case (AuthActions.AUTH_FAILED):
-      console.log('Error!!!', action.payload);
+      console.log('AuthFailed', action.payload.message);
+
+      return {
+        ...state,
+        token: '',
+        logged: false
+      };
+
+    case (AuthActions.LOGOUT):
       return {
         ...state,
         token: '',

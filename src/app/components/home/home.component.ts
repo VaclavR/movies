@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import * as RouterAction from '../../store/router/router.actions';
+import * as fromApp from '../../store/app.reducers';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
+    this.store.dispatch(new RouterAction.SaveActiveRoute('home'));
   }
 
 }

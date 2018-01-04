@@ -10,6 +10,7 @@
    <app-search-field></app-search-field>
   </div>
   <span class="navbar-text small text-truncate mt-1">
-    <a>Login/Signup</a>
+    <a *ngIf="!logged" routerLink="form">Login/Signup</a>
+    <a *ngIf="logged" (click)="logout()">Logout</a>
   </span>
 </nav>

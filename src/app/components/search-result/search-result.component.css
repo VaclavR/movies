@@ -1,7 +1,30 @@
-table img {
-  max-width: 210px;
+td img {
+  max-width: 110px;
+}
+
+th {
+  min-width: 200px;
+}
+
+td, th {
+  border: none!important;
 }
 
 .card {
   margin-top: 20px;
+  background-color: #080808;
+}
+
+.image-overlay {
+  overflow: hidden;
+  max-height: 241.94px;
+}
+
+.tunned-link {
+  color: lightgreen;
+}
+
+.tunned-link:hover {
+  color: #b5feb1;
+  text-decoration: none;
 }

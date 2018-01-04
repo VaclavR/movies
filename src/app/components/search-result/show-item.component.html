@@ -1,0 +1,21 @@
+<table class="table">
+  <tbody>
+    <tr>
+      <td width="20%">
+        <a><i [ngClass]="[liked ? 'fa-heart' : 'fa-heart-o']"
+              *ngIf="logged"
+              (click)="like(show.show.id)"
+              class="fa text-danger" aria-hidden="true">
+        </i></a>
+        <a class="tunned-link" [routerLink]="['/results/show', show.show.id]">{{ show.show.name }}</a>
+      </td>
+      <td width="20%">
+        <img *ngIf="show.show.image !== null" [src]=show.show.image.medium [alt]=show.show.name>
+        <img *ngIf="show.show.image === null" src="assets/no-img.png" [alt]=show.show.name>
+      </td>
+      <td style="width: 60%" *ngIf="show.show.summary" [innerHtml]="show.show.summary | shorten:[200, '...']"></td>
+      <td style="width: 60%" *ngIf="!show.show.summary">There is no summary...</td>
+    </tr>
+  </tbody>
+</table>
+

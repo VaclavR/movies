@@ -4,12 +4,13 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import * as fromApp from '../../store/app.reducers';
 import * as fromSearch from '../../store/search/search.reducers';
+import * as RouterAction from '../../store/router/router.actions';
 import * as SearchActions from '../../store/search/search.actions';
 
 @Component({
   selector: 'app-person-detail',
   templateUrl: './person-detail.component.html',
-  styleUrls: ['./person-detail.component.css']
+  styleUrls: ['./detail.component.css']
 })
 
 export class PersonDetailComponent implements OnInit, OnDestroy {
@@ -23,6 +24,7 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const id = +this.route.snapshot.params['id'];
+    this.store.dispatch(new RouterAction.SaveActiveRoute('results/person/' + id));
     this.store.dispatch(new SearchActions.FetchPersonById(id));
     this.searchSubscription = this.store.select('search')
       .subscribe((state: fromSearch.State) => {

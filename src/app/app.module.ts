@@ -10,6 +10,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { SearchEffects } from './store/search/search.effects';
 import { AuthEffects } from './store/auth/auth.effects';
 import { reducers } from './store/app.reducers';
+import { UserEffects } from './store/user/user.effects';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { reducers } from './store/app.reducers';
     AppRoutingModule,
     ComponentsModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([SearchEffects, AuthEffects])
+    EffectsModule.forRoot([SearchEffects, AuthEffects, UserEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,7 +13,8 @@ export class FormComponent implements OnInit {
 
   form = new FormGroup({
     email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
+    password: new FormControl('', Validators.required),
+    newUser: new FormControl(false)
   });
 
   constructor(private store: Store<fromApp.AppState>) { }
@@ -23,7 +24,11 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.store.dispatch(new AuthActions.TryLogin(this.form.value));
+    if (this.form.value.newUser) {
+      this.store.dispatch(new AuthActions.TrySignup(this.form.value));
+    } else {
+      this.store.dispatch(new AuthActions.TryLogin(this.form.value));
+    }
   }
 
 }

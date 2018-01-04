@@ -1,0 +1,11 @@
+th {
+  width: 300px;
+}
+
+td, th {
+  border: none!important;
+}
+
+.summary {
+  padding-left: 30px;
+}

@@ -2,9 +2,10 @@ import { Action } from '@ngrx/store';
 
 export const TRY_LOGIN = 'TRY_LOGIN';
 export const LOGIN = 'LOGIN';
-export const GET_TOKEN = 'GET_TOKEN';
-export const SET_TOKEN = 'SET_TOKEN';
+export const TRY_SIGNUP = 'TRY_SIGNUP';
+export const GET_USER_ID_AND_TOKEN = 'GET_USER_ID_AND_TOKEN';
 export const AUTH_FAILED = 'AUTH_FAILED';
+export const LOGOUT = 'LOGOUT';
 
 export class TryLogin implements Action {
   readonly type = TRY_LOGIN;
@@ -13,15 +14,17 @@ export class TryLogin implements Action {
 
 export class Login implements Action {
   readonly type = LOGIN;
-}
-
-export class GetToken implements Action {
-  readonly type = GET_TOKEN;
-}
-
-export class SetToken implements Action {
-  readonly type = SET_TOKEN;
   constructor(public payload: string) {}
+}
+
+export class TrySignup implements Action {
+  readonly type = TRY_SIGNUP;
+  constructor(public payload: {email: string, password: string}) {}
+}
+
+export class GetUserIdAndToken implements Action {
+  readonly type = GET_USER_ID_AND_TOKEN;
+  constructor(public payload: any) {}
 }
 
 export class AuthFailed implements Action {
@@ -29,10 +32,14 @@ export class AuthFailed implements Action {
   constructor(public payload: any) {}
 }
 
+export class Logout implements Action {
+  readonly type = LOGOUT;
+}
 
 export type AuthActions =
   TryLogin |
   Login |
-  GetToken |
-  SetToken |
-  AuthFailed;
+  TrySignup |
+  GetUserIdAndToken |
+  AuthFailed |
+  Logout;

@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 import * as fromSearch from '../../store/search/search.reducers';
+import * as RouterAction from '../../store/router/router.actions';
 import * as fromApp from '../../store/app.reducers';
 
 @Component({
@@ -14,10 +15,12 @@ export class SearchResultComponent implements OnInit, OnDestroy {
   searchKey: string;
   searchSubscription: Subscription;
   searchResults;
+
   constructor(private store: Store<fromApp.AppState>,
               private router: Router) { }
 
   ngOnInit() {
+    this.store.dispatch(new RouterAction.SaveActiveRoute('results'));
     this.searchSubscription = this.store.select('search')
       .subscribe((state: fromSearch.State) => {
         if (state.searchKey.length === 0) {
@@ -33,6 +36,7 @@ export class SearchResultComponent implements OnInit, OnDestroy {
           }
         }
       });
+
   }
 
   ngOnDestroy() {

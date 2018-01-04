@@ -14,6 +14,9 @@ import { NavComponent } from './nav/nav.component';
 import { SearchFieldComponent } from './search-field/search-field.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { FormComponent } from './form/form.component';
+import { ShowItemComponent } from './search-result/show-item.component';
+import { PeopleCardComponent } from './search-result/people-card.component';
+import { ShortenPipe } from '../store/shorten.pipe';
 
 @NgModule({
   imports: [
@@ -33,7 +36,10 @@ import { FormComponent } from './form/form.component';
     NavComponent,
     SearchFieldComponent,
     SearchResultComponent,
-    FormComponent
+    FormComponent,
+    ShowItemComponent,
+    PeopleCardComponent,
+    ShortenPipe
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   exports: [
@@ -46,7 +52,9 @@ import { FormComponent } from './form/form.component';
     NavComponent,
     SearchFieldComponent,
     SearchResultComponent,
-    FormComponent
+    FormComponent,
+    ShowItemComponent,
+    PeopleCardComponent
   ]
 })
 
