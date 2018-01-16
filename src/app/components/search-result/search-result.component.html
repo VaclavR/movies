@@ -12,7 +12,7 @@
     <!-- Actors -->
     <h5>Actors</h5>
     <div class="row" *ngIf="searchResults[1].length !== 0">
-        <app-people-card class="col-md-3" *ngFor="let result of searchResults[1]" [people]="result"></app-people-card>
+        <app-people-card class="col-md-3" *ngFor="let result of searchResults[1]" [actors]="result"></app-people-card>
     </div>
   </div>
 </div>

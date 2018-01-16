@@ -9,7 +9,7 @@ import * as fromApp from '../../store/app.reducers';
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
-  styleUrls: ['./search-result.component.css']
+  styleUrls: ['./search.component.css']
 })
 export class SearchResultComponent implements OnInit, OnDestroy {
   searchKey: string;

@@ -2,11 +2,7 @@
   <tbody>
     <tr>
       <td width="20%">
-        <a><i [ngClass]="[liked ? 'fa-heart' : 'fa-heart-o']"
-              *ngIf="logged"
-              (click)="like(show.show.id)"
-              class="fa text-danger" aria-hidden="true">
-        </i></a>
+        <app-like-button *ngIf="logged" [likeData]="{ id: show.show.id, name: show.show.name, type: 'show'}"></app-like-button>
         <a class="tunned-link" [routerLink]="['/results/show', show.show.id]">{{ show.show.name }}</a>
       </td>
       <td width="20%">

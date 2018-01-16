@@ -15,8 +15,14 @@
   </table>
   <h4>Cast</h4>
   <span *ngFor="let result of searchResult[1]; let i = index">
-    <a *ngIf="result._embedded !== undefined"
-       (click)="reRoute(result._embedded.show.id)">
-      {{ result._embedded.show.name }}</a><span *ngIf="i < searchResult[1].length - 1">,</span>
+    <span *ngIf="result._embedded !== undefined">
+      <app-like-button *ngIf="logged"
+                       [likeData]="{id: result._embedded.show.id, name: result._embedded.show.name, type: 'show'}">
+      </app-like-button>
+      <a (click)="reRoute(result._embedded.show.id)">
+        {{ result._embedded.show.name }}
+      </a>
+      <span *ngIf="i < searchResult[1].length - 1">,</span>
+    </span>
   </span>
 </div>

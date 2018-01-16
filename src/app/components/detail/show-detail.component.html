@@ -1,17 +1,26 @@
 <div *ngIf="searchResult !== undefined" class="container">
   <table class="table">
     <tbody>
-    <tr *ngIf="searchResult[0] !== undefined">
-      <th> {{ searchResult[0].name }}</th>
-      <td><img *ngIf="searchResult[0].image !== null" [src]="searchResult[0].image.medium" alt="poster is not available"></td>
+    <span *ngIf="searchResult[0] !== undefined">
+      <p>{{ searchResult[0].name }}</p>
+      <tr>
+        <td>
+          <img *ngIf="searchResult[0].image !== null" [src]="searchResult[0].image.medium" alt="poster is not available">
+        </td>
       <td class="summary" [innerHtml]="searchResult[0].summary"></td>
     </tr>
+    </span>
     </tbody>
   </table>
 
   <h4>Cast</h4>
   <span *ngFor="let result of searchResult[1]; let i = index">
-    <a *ngIf="result !== undefined" (click)="reRouteToPerson(result.person?.id)">{{ result.person?.name }}</a><span *ngIf="i < searchResult[1].length - 1">,</span>
+    <span *ngIf="result !== undefined">
+      <app-like-button *ngIf="logged"
+                       [likeData]="{id: result.person?.id, name: result.person?.name, type: 'actor'}">
+      </app-like-button>
+      <a (click)="reRouteToPerson(result.person?.id)">{{ result.person?.name }}</a><span *ngIf="i < searchResult[1].length - 1">,</span>
+    </span>
   </span>
   <br><br>
 

@@ -13,3 +13,18 @@ input:focus {
   background-color: black;
   border-color: #066c3f;
 }
+
+.h60px {
+  height: 60px!important;
+}
+
+.responsive-input {
+  width: 200px!important;
+}
+
+
+@media (min-width: 650px) {
+  .responsive-input {
+    width: 400px!important;
+  }
+}

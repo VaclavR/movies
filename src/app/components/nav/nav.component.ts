@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducers';
-import * as fromAuth from '../../store/auth/auth.reducers';
-import * as AuthActions from '../../store/auth/auth.actions';
+import * as fromUser from '../../store/user/user.reducers';
+import * as UserActions from '../../store/user/user.actions';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -12,23 +12,25 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class NavComponent implements OnInit, OnDestroy {
   logged = false;
-  authSubscription: Subscription;
+  userSubscription: Subscription;
 
   constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
-    this.authSubscription = this.store.select('auth')
-      .subscribe((store: fromAuth.State) => {
+    this.userSubscription = this.store.select('user')
+      .subscribe((store: fromUser.State) => {
         this.logged = store.logged;
       });
   }
 
   logout() {
-    this.store.dispatch(new AuthActions.Logout());
+    this.store.dispatch(new UserActions.Logout());
   }
 
   ngOnDestroy() {
-    this.authSubscription.unsubscribe();
+    if (this.userSubscription !== undefined) {
+      this.userSubscription.unsubscribe();
+    }
   }
 
 }

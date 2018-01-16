@@ -19,12 +19,3 @@ td, th {
   overflow: hidden;
   max-height: 241.94px;
 }
-
-.tunned-link {
-  color: lightgreen;
-}
-
-.tunned-link:hover {
-  color: #b5feb1;
-  text-decoration: none;
-}

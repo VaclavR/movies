@@ -6,6 +6,7 @@ import * as fromApp from '../../store/app.reducers';
 import * as fromSearch from '../../store/search/search.reducers';
 import * as RouterAction from '../../store/router/router.actions';
 import * as SearchActions from '../../store/search/search.actions';
+import * as fromUser from '../../store/user/user.reducers';
 
 @Component({
   selector: 'app-show-detail',
@@ -14,8 +15,10 @@ import * as SearchActions from '../../store/search/search.actions';
 })
 export class ShowDetailComponent implements OnInit, OnDestroy {
   searchSubscription: Subscription;
+  userSubscription: Subscription;
   searchResult;
   id: number;
+  logged = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -30,6 +33,10 @@ export class ShowDetailComponent implements OnInit, OnDestroy {
         if (state.searchResult.length !== 0) {
           this.searchResult = state.searchResult;
         }
+      });
+    this.userSubscription = this.store.select('user')
+      .subscribe((state: fromUser.State) => {
+        this.logged = state.logged;
       });
   }
 

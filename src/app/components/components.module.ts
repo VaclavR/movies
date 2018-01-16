@@ -17,6 +17,7 @@ import { FormComponent } from './form/form.component';
 import { ShowItemComponent } from './search-result/show-item.component';
 import { PeopleCardComponent } from './search-result/people-card.component';
 import { ShortenPipe } from '../store/shorten.pipe';
+import { LikeButtonComponent } from './search-result/like-button.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { ShortenPipe } from '../store/shorten.pipe';
     FormComponent,
     ShowItemComponent,
     PeopleCardComponent,
+    LikeButtonComponent,
     ShortenPipe
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
@@ -54,7 +56,8 @@ import { ShortenPipe } from '../store/shorten.pipe';
     SearchResultComponent,
     FormComponent,
     ShowItemComponent,
-    PeopleCardComponent
+    PeopleCardComponent,
+    LikeButtonComponent
   ]
 })
 

@@ -1,45 +1,53 @@
 import * as UserActions from './user.actions';
-import { User } from '../user.model';
+import { Favorite } from '../models';
 
 export interface State {
-  userData: User;
+  favorites: Favorite[];
   userId: string;
+  logged: boolean;
 }
 
 const initialState = {
-  userData: new User([], []),
-  userId: ''
+  favorites: [],
+  userId: '',
+  logged: false
 };
 
 export function UserReducer(state = initialState, action: UserActions.UserActions) {
-  let index = 0;
   switch (action.type) {
 
-    case (UserActions.TOGGLE_SHOW_LIKE):
-      index = state.userData.shows.indexOf(action.payload);
-      if (index !== -1) {
-        state.userData.shows.splice(index, 1);
+    case (UserActions.TOGGLE_LIKE):
+      const index = state.favorites.findIndex((favorite: Favorite) => {
+        return favorite.id === action.payload.id && favorite.type === action.payload.type;
+      });
+      if (index === -1) {
+        state.favorites.push(action.payload);
       } else {
-        state.userData.shows.push(action.payload);
+        state.favorites.splice(index, 1);
       }
       return {
         ...state
       };
 
-    case(UserActions.TOGGLE_PERSON_LIKE):
-      index = state.userData.actors.indexOf(action.payload);
-      if (index !== -1) {
-        state.userData.actors.splice(index, 1);
-      } else {
-        state.userData.actors.push(action.payload);
-      }
-      return {
-        ...state
-      };
 
-    case(UserActions.EXPERIMENT):
+    case(UserActions.SAVE_USER_DATA):
       console.log(action.payload);
-      return state;
+      if (action.payload[1] !== null) {
+        state.favorites = action.payload[1];
+      }
+      return {
+        ...state,
+        userId: action.payload[0],
+        logged: true
+      };
+
+    case(UserActions.LOGOUT):
+      return {
+        ...state,
+        favorites: [],
+        userId: '',
+        logged: false
+      };
 
     default:
       return state;
