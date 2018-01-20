@@ -1,10 +1,8 @@
 <div class="card">
-  <div class="image-overlay">
-    <img class="card-img-top" *ngIf="actors.person.image !== null"
-         [src]="actors.person.image.medium" [alt]="actors.person.name">
-    <img class="card-img-top" *ngIf="actors.person.image === null"
-       src="assets/no-img.png" [alt]="actors.person.name">
-  </div>
+  <img class="card-img-top" *ngIf="actors.person.image !== null"
+       [src]="actors.person.image.medium" [alt]="actors.person.name">
+  <img class="card-img-top" *ngIf="actors.person.image === null"
+     src="assets/no-img.png" [alt]="actors.person.name">
   <div class="card-body">
     <p class="card-title">
       <app-like-button *ngIf="logged" [likeData]="{id: actors.person.id, name: actors.person.name, type: 'actor'}"></app-like-button>

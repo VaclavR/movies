@@ -1,17 +1,15 @@
-<table class="table">
-  <tbody>
-    <tr>
-      <td width="20%">
-        <app-like-button *ngIf="logged" [likeData]="{ id: show.show.id, name: show.show.name, type: 'show'}"></app-like-button>
-        <a class="tunned-link" [routerLink]="['/results/show', show.show.id]">{{ show.show.name }}</a>
-      </td>
-      <td width="20%">
-        <img *ngIf="show.show.image !== null" [src]=show.show.image.medium [alt]=show.show.name>
-        <img *ngIf="show.show.image === null" src="assets/no-img.png" [alt]=show.show.name>
-      </td>
-      <td style="width: 60%" *ngIf="show.show.summary" [innerHtml]="show.show.summary | shorten:[200, '...']"></td>
-      <td style="width: 60%" *ngIf="!show.show.summary">There is no summary...</td>
-    </tr>
-  </tbody>
-</table>
-
+<div class="row">
+  <div class="col-12 col-sm-6">
+    <app-like-button *ngIf="logged" [likeData]="{ id: show.show.id, name: show.show.name, type: 'show'}"></app-like-button>
+    <h5 class="text-center"><a class="tunned-link" [routerLink]="['/results/show', show.show.id]">{{ show.show.name }}</a></h5>
+    <div class="center">
+      <img *ngIf="show.show.image !== null" [src]=show.show.image.medium [alt]=show.show.name>
+      <img *ngIf="show.show.image === null" src="assets/no-img.png" [alt]=show.show.name>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6">
+    <div class="summary" *ngIf="show.show.summary" [innerHtml]="show.show.summary | shorten:[400, '...']"></div>
+    <div class="summary" *ngIf="!show.show.summary">There is no summary...</div>
+  </div>
+</div>
+<hr>

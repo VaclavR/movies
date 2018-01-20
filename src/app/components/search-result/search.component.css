@@ -1,21 +1,19 @@
-td img {
-  max-width: 110px;
-}
-
-th {
-  min-width: 200px;
-}
-
-td, th {
-  border: none!important;
-}
-
 .card {
   margin-top: 20px;
   background-color: #080808;
 }
 
-.image-overlay {
-  overflow: hidden;
-  max-height: 241.94px;
+.summary {
+  padding-top: 28px;
+}
+
+hr {
+  border-top: 1px solid #99e69a;
+  margin: 40px;
+}
+
+.center {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  /*align-items: center*/
 }

@@ -1,27 +1,20 @@
 <div *ngIf="searchResult !== undefined" class="container">
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Poster</th>
-      <th scope="col">Summary</th>
-      <th scope="col">Season</th>
-      <th scope="col">Episode</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <th> {{ searchResult.name }}</th>
-      <td *ngIf="searchResult.image !== undefined">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <h5 class="text-center"> {{ searchResult.name }} -
+        S<span *ngIf="searchResult.season < 10">0</span>{{ searchResult.season }}E<span *ngIf="searchResult.number < 10">0</span>{{ searchResult.number }}</h5>
+      <div *ngIf="searchResult.image !== undefined" class="center">
         <img *ngIf="searchResult.image !== null" [src]="searchResult.image.medium"
              alt="poster is not available">
-      </td>
-      <td [innerHtml]="searchResult.summary"></td>
-      <td>{{ searchResult.season }}</td>
-      <td>{{ searchResult.number }}</td>
-    </tr>
-    </tbody>
-  </table>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="center">
+        <div [innerHtml]="searchResult.summary" class="summary"></div>
+      </div>
+    </div>
+  </div>
+  <br>
   <button (click)="goBack()" class="btn btn-info">Back</button>
 
 </div>

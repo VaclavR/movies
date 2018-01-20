@@ -1,11 +1,11 @@
-a:hover {
-  cursor: pointer;
-}
-
-
 body {
   background-color: black;
   color: #99e69a;
+  font-family: 'Roboto', sans-serif;
+}
+
+a:hover {
+  cursor: pointer;
 }
 
 .table-green th, .table-green td {

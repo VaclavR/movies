@@ -1,37 +1,58 @@
 <div *ngIf="searchResult !== undefined" class="container">
-  <table class="table">
-    <tbody>
-    <span *ngIf="searchResult[0] !== undefined">
-      <p>{{ searchResult[0].name }}</p>
-      <tr>
-        <td>
-          <img *ngIf="searchResult[0].image !== null" [src]="searchResult[0].image.medium" alt="poster is not available">
-        </td>
-      <td class="summary" [innerHtml]="searchResult[0].summary"></td>
-    </tr>
-    </span>
-    </tbody>
-  </table>
 
-  <h4>Cast</h4>
-  <span *ngFor="let result of searchResult[1]; let i = index">
-    <span *ngIf="result !== undefined">
-      <app-like-button *ngIf="logged"
-                       [likeData]="{id: result.person?.id, name: result.person?.name, type: 'actor'}">
-      </app-like-button>
-      <a (click)="reRouteToPerson(result.person?.id)">{{ result.person?.name }}</a><span *ngIf="i < searchResult[1].length - 1">,</span>
-    </span>
-  </span>
-  <br><br>
+  <div class="row" *ngIf="searchResult[0] !== undefined">
+    <div class="col-12 col-md-6">
+      <h4 class="text-center">{{ searchResult[0].name }}</h4>
+      <div class="center">
+        <img *ngIf="searchResult[0].image !== null" [src]="searchResult[0].image.medium" alt="poster is not available">
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <p class="summary" [innerHtml]="searchResult[0].summary"></p>
+    </div>
+  </div>
 
-  <h4>Episodes</h4>
-  <table class="table table-striped">
-    <tr *ngFor="let episode of searchResult[2]">
-      <th><a (click)="reRouteToEpisode({season: episode.season, episode: episode.number})">{{ episode.name }}</a></th>
-      <td>{{ episode.season }}</td>
-      <td>{{ episode.number }}</td>
-      <td>{{ episode.airdate }}</td>
-      <td>{{ episode.airtime }}</td>
-    </tr>
-  </table>
+  <div class="row">
+    <div class="col-12 center">
+      <div>
+        <h4 class="text-center">Cast</h4>
+        <p class="summary">
+          <span *ngFor="let result of searchResult[1]; let i = index">
+            <span *ngIf="result !== undefined">
+              <app-like-button *ngIf="logged"
+                               [likeData]="{id: result.person?.id, name: result.person?.name, type: 'actor'}">
+              </app-like-button>
+              <a (click)="reRouteToPerson(result.person?.id)">{{ result.person?.name }}</a><span *ngIf="i < searchResult[1].length - 1">,</span>
+            </span>
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 center">
+      <div>
+        <h4 class="text-center">Episodes</h4>
+        <table class="table table-sm table-responsive">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>S</th>
+              <th>E</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let episode of searchResult[2]">
+              <td>
+                <a (click)="reRouteToEpisode({season: episode.season, episode: episode.number})">{{ episode.name }}</a>
+              </td>
+              <td>{{ episode.season }}</td>
+              <td>{{ episode.number }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

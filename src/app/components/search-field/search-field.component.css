@@ -15,16 +15,24 @@ input:focus {
 }
 
 .h60px {
-  height: 60px!important;
+
 }
 
 .responsive-input {
-  width: 200px!important;
+  width: 120px!important;
+  height: 50px!important;
 }
 
+@media (min-width: 400px) {
+  .responsive-input {
+    width: 200px!important;
+    height: 55px!important;
+  }
+}
 
 @media (min-width: 650px) {
   .responsive-input {
     width: 400px!important;
+    height: 60px!important;
   }
 }

@@ -1,28 +1,25 @@
 <div *ngIf="searchResult !== undefined" class="container">
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Poster</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngIf="searchResult[0] !== undefined">
-      <th> {{ searchResult[0].name }}</th>
-      <td><img *ngIf="searchResult[0].image !== null" [src]="searchResult[0].image.medium" alt="poster is not available"></td>
-    </tr>
-    </tbody>
-  </table>
-  <h4>Cast</h4>
-  <span *ngFor="let result of searchResult[1]; let i = index">
-    <span *ngIf="result._embedded !== undefined">
-      <app-like-button *ngIf="logged"
-                       [likeData]="{id: result._embedded.show.id, name: result._embedded.show.name, type: 'show'}">
-      </app-like-button>
-      <a (click)="reRoute(result._embedded.show.id)">
-        {{ result._embedded.show.name }}
-      </a>
-      <span *ngIf="i < searchResult[1].length - 1">,</span>
-    </span>
-  </span>
+  <div class="row">
+    <div *ngIf="searchResult[0] !== undefined" class="col-12 col-md-6">
+      <h5 class="text-center"> {{ searchResult[0].name }}</h5>
+      <div class="center"><img *ngIf="searchResult[0].image !== null" [src]="searchResult[0].image.medium" alt="poster is not available"></div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="center">
+        <div class="summary">
+          <span *ngFor="let result of searchResult[1]; let i = index">
+            <span *ngIf="result._embedded !== undefined">
+              <app-like-button *ngIf="logged"
+                               [likeData]="{id: result._embedded.show.id, name: result._embedded.show.name, type: 'show'}">
+              </app-like-button>
+              <a (click)="reRoute(result._embedded.show.id)">
+                {{ result._embedded.show.name }}
+              </a>
+              <span *ngIf="i < searchResult[1].length - 1">,</span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
