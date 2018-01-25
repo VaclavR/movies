@@ -1,8 +1,8 @@
 
 td, th {
   border: none!important;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .summary {
@@ -12,12 +12,6 @@ td, th {
 hr {
   border-top: 1px solid #99e69a;
   margin: 40px;
-}
-
-.center {
-  display: flex;
-  justify-content: center; /* align horizontal */
-  /*align-items: center*/
 }
 
 .row {

@@ -16,13 +16,14 @@ export class UserEffects {
   url = 'http://api.tvmaze.com/';
   userId: string;
 
-  @Effect({ dispatch: false })
+  @Effect({ dispatch: true })
   uploadUserData = this.actions$
     .ofType(UserActions.UPLOAD_USER_DATA)
     .map((action: UserActions.UploadUserData) => {
       if (!action.payload) {
+        console.log('no payload!');
         this.userId = firebase.auth().currentUser.uid;
-        return new Favorite(0, '', '');
+        return [new Favorite(0, '', '')];
       } else {
         return action.payload;
       }
@@ -30,12 +31,12 @@ export class UserEffects {
     .switchMap((userData) => {
       return firebase.database().ref('users/' + this.userId)
         .set(userData)
-        // .then(() => {
-        //   return {
-        //     // type: UserActions.SAVE_USER_DATA,
-        //     // payload: [this.userId, userData]
-        //   };
-        // })
+        .then(() => {
+          return {
+            type: UserActions.SAVE_USER_DATA,
+            payload: [this.userId, userData]
+          };
+        })
         .catch((error) => {
           console.log(error);
         });

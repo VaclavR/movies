@@ -1,27 +1,31 @@
 <div class="container">
-  <h3>Your Favorites</h3>
+  <h3 class="text-center">Your Favorites</h3>
   <div class="row">
     <div class="col-md-6">
-      <h5>Shows</h5>
-      <ul>
-        <li *ngFor="let show of favorites">
-      <span *ngIf="show.type === 'show'">
-        <app-like-button [likeData]="{id: show.id, name: show.name, type: 'show'}"></app-like-button>
-        <a class="tunned-link" [routerLink]="['/results/show', show.id]">{{ show.name | shorten }}</a>
-      </span>
-        </li>
-      </ul>
+      <h5 class="text-center">Shows</h5>
+      <div class="center">
+        <ul>
+          <li *ngFor="let show of favorites">
+        <span *ngIf="show.type === 'show'">
+          <app-like-button [likeData]="{id: show.id, name: show.name, type: 'show'}"></app-like-button>
+          <a class="tunned-link" [routerLink]="['/results/show', show.id]">{{ show.name | shorten }}</a>
+        </span>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="col-md-6">
-      <h5>Actors</h5>
-      <ul>
-        <li *ngFor="let actor of favorites">
-      <span *ngIf="actor.type === 'actor'">
-        <app-like-button [likeData]="{id: actor.id, name: actor.name, type: 'actor'}"></app-like-button>
-        <a class="tunned-link" [routerLink]="['/results/person', actor.id]">{{ actor.name | shorten }}</a>
-      </span>
-        </li>
-      </ul>
+      <h5 class="text-center">Actors</h5>
+      <div class="center">
+        <ul>
+          <li *ngFor="let actor of favorites">
+        <span *ngIf="actor.type === 'actor'">
+          <app-like-button [likeData]="{id: actor.id, name: actor.name, type: 'actor'}"></app-like-button>
+          <a class="tunned-link" [routerLink]="['/results/person', actor.id]">{{ actor.name | shorten }}</a>
+        </span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

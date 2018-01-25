@@ -21,3 +21,9 @@ a:hover {
   color: #b5feb1;
   text-decoration: none;
 }
+
+.center {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  /*align-items: center*/
+}

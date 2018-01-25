@@ -12,8 +12,7 @@ import * as fromUser from '../../store/user/user.reducers';
     <a><i [ngClass]="[liked ? 'fa-heart' : 'fa-heart-o']"
        (click)="onClick()"
        class="fa text-danger" aria-hidden="true">
-    </i></a>`,
-  styleUrls: ['search.component.css']
+    </i></a>`
 })
 
 export class LikeButtonComponent implements OnInit {
@@ -31,11 +30,12 @@ export class LikeButtonComponent implements OnInit {
         const index = this.favorites.findIndex((favorite: Favorite) => {
           return favorite.id === this.likeData.id;
         });
-        if (index !== -1) {
-          this.liked = true;
-        } else {
-          this.liked = false;
-        }
+        this.liked = index !== -1;
+        // if (index !== -1) {
+        //   this.liked = true;
+        // } else {
+        //   this.liked = false;
+        // }
       });
   }
 

@@ -37,10 +37,6 @@ export class EpisodeDetailComponent implements OnInit, OnDestroy {
       });
   }
 
-  goBack() {
-    this.router.navigate(['/results/show', this.id]);
-  }
-
   ngOnDestroy() {
     this.searchSubscription.unsubscribe();
   }

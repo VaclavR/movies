@@ -17,7 +17,8 @@ import { FormComponent } from './form/form.component';
 import { ShowItemComponent } from './search-result/show-item.component';
 import { PeopleCardComponent } from './search-result/people-card.component';
 import { ShortenPipe } from '../store/shorten.pipe';
-import { LikeButtonComponent } from './search-result/like-button.component';
+import { LikeButtonComponent } from './shared/like-button.component';
+import { BackButtonComponent } from './shared/back-button.component';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { LikeButtonComponent } from './search-result/like-button.component';
     ShowItemComponent,
     PeopleCardComponent,
     LikeButtonComponent,
+    BackButtonComponent,
     ShortenPipe
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
@@ -57,7 +59,8 @@ import { LikeButtonComponent } from './search-result/like-button.component';
     FormComponent,
     ShowItemComponent,
     PeopleCardComponent,
-    LikeButtonComponent
+    LikeButtonComponent,
+    BackButtonComponent
   ]
 })
 

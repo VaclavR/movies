@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe((store: fromUser.State) => {
         this.logged = store.logged;
       });
-    this.store.dispatch(new RouterAction.SaveActiveRoute('home'));
+    this.store.dispatch(new RouterAction.SaveActiveRoute('/'));
   }
 
   ngOnDestroy() {
